@@ -1,6 +1,7 @@
 using FracturedJson.Parsing;
 using Xunit;
 namespace WebApp;
+
 public class UtilsTest
 {
     private static readonly Arr mockUsers = JSON.Parse(
