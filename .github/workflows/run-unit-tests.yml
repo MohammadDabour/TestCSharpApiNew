@@ -1,4 +1,5 @@
-name: Run unit tests
+
+name: .NET Core Desktop
 
 on:
   push:
@@ -6,12 +7,14 @@ on:
   pull_request:
     branches: [ "main" ]
 
+
 jobs:
 
   build:
 
     strategy:
       matrix:
+
         configuration: [Debug]
 
     runs-on: windows-latest  
@@ -43,17 +46,14 @@ jobs:
     # Start backend non-blocking
     - name: Start the backend
       shell: bash
-      run: cd Backend && nohup dotnet run &
+      run: cd Backend && nohup dotnet run
 
     # Run the endpoint tests
-    # (note: The reason we don't have to install Newman
-    #  is that it is already installed in the 
-    #  GitHub Actions Windows Server runner image)
     - name: Run the endpoint tests
       shell: bash
-      run: cd endpoint-tests && npm test
+      run: cd endpoint-test-for-categories-and-post-for-products && npm test
 
-    # Run the UI tests
+      # Run the UI tests
     - name: Run the UI tests
       shell: bash
       run: cd ui-tests && npm install && npm run test-ui-cli
