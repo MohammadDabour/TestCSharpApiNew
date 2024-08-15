@@ -50,7 +50,7 @@ jobs:
     # Run the endpoint tests
     - name: Run the endpoint tests
       shell: bash
-      run: cd endpoint-test && npm test
+      run: cd endpoint-tests && npm test
 
       # Run the UI tests
     - name: Run the UI tests
